@@ -57,4 +57,9 @@ public class CustomerServiceImpl implements CustomerService {
 		customerRepo.deleteAll();
 	}
 
+	@Override
+	public List<Customer> findByFirstName(String firstName) {
+		return customerRepo.findByFirstName(firstName);
+	}
+
 }

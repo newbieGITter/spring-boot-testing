@@ -2,6 +2,8 @@ package com.example.restful.repo;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,6 +75,26 @@ public class CustomerRepositoryTest {
 		Customer foundCustomer = repository.findOne(customer2.getId());
 
 		assertThat(foundCustomer).isEqualTo(customer2);
+	}
+	
+	@Test
+	public void should_find_customer_by_first_name() {
+		Customer customer1 = new Customer("Saahas", "Kulkarni");
+		entityManager.persist(customer1);
+
+		List<Customer> customers = repository.findByFirstName("Saahas");
+
+		assertThat(customers.get(0)).isEqualTo(customer1);
+	}
+
+	@Test
+	public void should_find_customer_by_last_name() {
+		Customer customer1 = new Customer("Saahas", "Kulkarni");
+		entityManager.persist(customer1);
+
+		List<Customer> customers = repository.findByLastName("Kulkarni");
+
+		assertThat(customers.get(0)).isEqualTo(customer1);
 	}
 
 }

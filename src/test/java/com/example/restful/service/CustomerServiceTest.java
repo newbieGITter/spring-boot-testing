@@ -49,6 +49,15 @@ public class CustomerServiceTest {
 
 		assertThat(customers.get(0).getFirstName()).isEqualTo("Saahas");
 	}
+	
+	@Test
+	public void shouldReturnCustomer_forExistingCustomerFirstName() {
+		Mockito.when(customerRepo.findByFirstName("Saahas")).thenReturn(customerList());
+		
+		List<Customer> customers = customerService.findByFirstName("Saahas");
+		
+		assertThat(customers.get(0).getLastName()).isEqualTo("Kulkarni");
+	}
 
 	@TestConfiguration
 	static class CustomerServiceTestConfiguration {

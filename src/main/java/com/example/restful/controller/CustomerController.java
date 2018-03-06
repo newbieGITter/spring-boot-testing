@@ -39,6 +39,11 @@ public class CustomerController {
 	public List<Customer> getCustomerByLastName(@PathVariable(value = "lastname") String lastName) {
 		return customerService.findByLastName(lastName);
 	}
+	
+	@RequestMapping("/firstname/{firstname}")
+	public List<Customer> getCustomerByFirstName(@PathVariable(value = "firstname") String firstname) {
+		return customerService.findByFirstName(firstname);
+	}
 
 	@RequestMapping("/findbyid")
 	public Customer findById(@RequestParam("custid") long custId) {

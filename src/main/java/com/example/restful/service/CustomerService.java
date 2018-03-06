@@ -6,13 +6,16 @@ import com.example.restful.model.Customer;
 
 public interface CustomerService {
 
+	List<Customer> findAll();
+	
+	Customer findById(long id);
+
 	List<Customer> findByLastName(String lastName);
+
+	List<Customer> findByFirstName(String firstname);
 
 	void save(Customer customer);
 
-	List<Customer> findAll();
-
-	Customer findById(long id);
-
 	void deleteAll();
+
 }
